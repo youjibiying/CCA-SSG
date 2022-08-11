@@ -73,8 +73,8 @@ class CCA_SSG(nn.Module):
         h1 = self.backbone(graph1, feat1)
         h2 = self.backbone(graph2, feat2)
 
-        z1 = (h1 - h1.mean(0)) / h1.std(0)
-        z2 = (h2 - h2.mean(0)) / h2.std(0)
+        # z1 = (h1 - h1.mean(0)) / h1.std(0)
+        # z2 = (h2 - h2.mean(0)) / h2.std(0)
 
-        return z1, z2
+        return h1, h2
 

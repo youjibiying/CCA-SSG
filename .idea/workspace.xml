@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fe87bf30-da8f-4e20-9257-ee145d26b622" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="d3ead2f8-5348-4f63-b89d-0f18a8b0aa52" />
+  <component name="ProjectId" id="23zVujjP1rlgVFF9n26LJCAg1uw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../finetune_gnns - 副本" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\pythonCode\CCA-SSG" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main-hgr-pubmed">
+    <configuration name="main-cs" type="PythonConfigurationType" factoryName="Python">
+      <module name="CCA-SSG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataname cs --epochs 50 --lambd 1e-3 --dfr 0.2 --lr2 5e-3 --wd2 1e-4 --use_mlp" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main-hgr-pubmed" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="CCA-SSG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataname pubmed --epochs 100 --lambd 1e-3 --dfr 0.3 --der 0.5 --lr2 1e-2 --wd2 1e-4 --self_sup_type hgr" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main-hgr" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="CCA-SSG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataname cora --epochs 50 --lambd 0.9 --dfr 0.1 --der 0.4 --lr2 1e-2 --wd2 1e-4 --self_sup_type hgr" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="CCA-SSG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataname cora --epochs 50 --lambd 1e-3 --dfr 0.1 --der 0.4 --lr2 1e-2 --wd2 1e-4" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main-cs" />
+      <item itemvalue="Python.main-hgr" />
+      <item itemvalue="Python.main-hgr-pubmed" />
+      <item itemvalue="Python.main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe87bf30-da8f-4e20-9257-ee145d26b622" name="Default Changelist" comment="" />
+      <created>1642737128483</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642737128483</updated>
+      <workItem from="1642737130110" duration="29648000" />
+      <workItem from="1643352903770" duration="1568000" />
+      <workItem from="1645171643825" duration="4197000" />
+      <workItem from="1648718272671" duration="1755000" />
+      <workItem from="1649394602361" duration="598000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2472" y="378" width="1312" height="683" key="#Deployment" timestamp="1642742544453">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2472" y="378" width="1312" height="683" key="#Deployment/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642742544453" />
+    <state x="2334" y="375" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1642754834463">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2334" y="375" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642754834463" />
+    <state width="1824" height="466" key="DebuggerActiveHint" timestamp="1642839197460">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1824" height="466" key="DebuggerActiveHint/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642839197460" />
+    <state x="655" y="170" key="FileChooserDialogImpl" timestamp="1643173575330">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="655" y="170" key="FileChooserDialogImpl/-1080.0.1080.1920/0.0.2048.1152@0.0.2048.1152" timestamp="1643173575330" />
+    <state x="2419" y="212" key="FileChooserDialogImpl/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642742557553" />
+    <state width="1258" height="534" key="GridCell.Tab.0.bottom" timestamp="1642840163067">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1258" height="534" key="GridCell.Tab.0.bottom/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642840163067" />
+    <state width="1258" height="534" key="GridCell.Tab.0.center" timestamp="1642840163067">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1258" height="534" key="GridCell.Tab.0.center/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642840163067" />
+    <state width="1258" height="534" key="GridCell.Tab.0.left" timestamp="1642840163066">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1258" height="534" key="GridCell.Tab.0.left/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642840163066" />
+    <state width="1258" height="534" key="GridCell.Tab.0.right" timestamp="1642840163067">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1258" height="534" key="GridCell.Tab.0.right/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642840163067" />
+    <state x="1909" y="102" width="1460" height="711" key="SettingsEditor" timestamp="1642742572760">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1909" y="102" width="1460" height="711" key="SettingsEditor/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642742572760" />
+    <state x="2430" y="342" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1642742571547">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2430" y="342" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642742571547" />
+    <state x="2581" y="485" width="596" height="536" key="find.popup" timestamp="1642752584283">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2581" y="485" width="596" height="536" key="find.popup/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642752584283" />
+    <state x="3006" y="450" width="350" height="539" key="ftp.server.browser" timestamp="1642742570462">
+      <screen x="1600" y="0" width="2560" height="1440" />
+    </state>
+    <state x="3006" y="450" width="350" height="539" key="ftp.server.browser/0.0.1600.900/1600.0.2560.1440@1600.0.2560.1440" timestamp="1642742570462" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CCA_SSG$main_cs.coverage" NAME="main-cs Coverage Results" MODIFIED="1642742742870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CCA_SSG$main_hgr_pubmed.coverage" NAME="main-hgr-pubmed Coverage Results" MODIFIED="1642839498433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CCA_SSG$main_hgr.coverage" NAME="main-hgr Coverage Results" MODIFIED="1642839490051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CCA_SSG$main.coverage" NAME="main Coverage Results" MODIFIED="1642750644136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

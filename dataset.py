@@ -6,20 +6,21 @@ from dgl.data import AmazonCoBuyPhotoDataset, AmazonCoBuyComputerDataset
 from dgl.data import CoauthorCSDataset, CoauthorPhysicsDataset
 
 def load(name):
+    data_path = '/apdcephfs/share_1364275/jiyingzhang/data/dgl'
     if name == 'cora':
-        dataset = CoraGraphDataset()
+        dataset = CoraGraphDataset(raw_dir=data_path)
     elif name == 'citeseer':
-        dataset = CiteseerGraphDataset()
+        dataset = CiteseerGraphDataset(raw_dir=data_path)
     elif name == 'pubmed':
-        dataset = PubmedGraphDataset()
+        dataset = PubmedGraphDataset(raw_dir=data_path)
     elif name == 'photo':
-        dataset = AmazonCoBuyPhotoDataset()
+        dataset = AmazonCoBuyPhotoDataset(raw_dir=data_path)
     elif name == 'comp':
-        dataset = AmazonCoBuyComputerDataset()
+        dataset = AmazonCoBuyComputerDataset(raw_dir=data_path)
     elif name == 'cs':
-        dataset = CoauthorCSDataset()
+        dataset = CoauthorCSDataset(raw_dir=data_path)
     elif name == 'physics':
-        dataset = CoauthorPhysicsDataset()
+        dataset = CoauthorPhysicsDataset(raw_dir=data_path)
 
     graph = dataset[0]
     citegraph = ['cora', 'citeseer', 'pubmed']

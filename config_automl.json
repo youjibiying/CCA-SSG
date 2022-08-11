@@ -1,0 +1,28 @@
+{
+    "Token":"_i68ibT88tv7OeZKZQTC4Q",
+    "business_flag": "DrugAI_CQ",
+    "model_local_file_path": "/apdcephfs/private_jiyingzhang_cq/CCA-SSG/start",
+    "host_num": 1,
+    "host_gpu_num": 1,
+    "image_full_name": "mirrors.tencent.com/jiyingzhang/g-tlinux2.2-python3.7-cuda10.1-nccl2.5.6-pytorch1.6-torchgeometric1.6-hvd-pyg-rdkit-dgl-cu101-cogdl-torch-cluster-torch-cluser-grakel-simplev1-pickle5-mdtraj-biopython:latest",
+    "type": "train",
+    "step": 10,
+    "Loss": 0.6,
+    "train_score": 0.6,
+    "val_score": 0.6,
+    "type": "test",
+    "step": 1,
+    "Loss": 0.6,
+    "report_period": 1,
+    "GDT_TS_target": 0.6,
+    "GPUName": "V100",
+    "readable_name": "hgr-cora",
+    "automl_params": {
+        "automl_config_path": "automl_config.py",
+        "trainner_log_path": "/apdcephfs/share_1364275/jiyingzhang/taiji_results/CCA-SSG/$TJ_TASK_ID/$METRICS_TRIAL_NAME/train_out.log"
+        },
+    "hyper_parameters": {
+        "batch_size": 32
+    },
+    "is_elasticity": false
+}

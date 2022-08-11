@@ -1,4 +1,4 @@
-import argparse
+import random
 
 from model import CCA_SSG, LogReg
 from aug import random_aug
@@ -7,43 +7,59 @@ from dataset import load
 import numpy as np
 import torch as th
 import torch.nn as nn
+import torch
 
 import warnings
 
 warnings.filterwarnings('ignore')
 
-parser = argparse.ArgumentParser(description='CCA-SSG')
 
-parser.add_argument('--dataname', type=str, default='cora', help='Name of dataset.')
-parser.add_argument('--gpu', type=int, default=0, help='GPU index.')
-parser.add_argument('--epochs', type=int, default=100, help='Training epochs.')
-parser.add_argument('--lr1', type=float, default=1e-3, help='Learning rate of CCA-SSG.')
-parser.add_argument('--lr2', type=float, default=1e-2, help='Learning rate of linear evaluator.')
-parser.add_argument('--wd1', type=float, default=0, help='Weight decay of CCA-SSG.')
-parser.add_argument('--wd2', type=float, default=1e-4, help='Weight decay of linear evaluator.')
+def setup_seed(seed):
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+    ## cuda 问题
+    torch.cuda.current_device()
+    torch.cuda._initialized = True
 
-parser.add_argument('--lambd', type=float, default=1e-3, help='trade-off ratio.')
-parser.add_argument('--n_layers', type=int, default=2, help='Number of GNN layers')
 
-parser.add_argument('--use_mlp', action='store_true', default=False, help='Use MLP instead of GNN')
+def neg_hscore(f, g, args):
+    """
+    compute the negative h-score
+     """
+    f0 = f - torch.mean(f, 0)  # zero-mean
+    g0 = g - torch.mean(g, 0)
+    corr = torch.mean(torch.sum(f0 * g0, 1))
+    cov_f = torch.t(f0) @ f0 / (f0.size()[0] - 1.)
+    cov_g = torch.t(g0) @ g0 / (g0.size()[0] - 1.)
+    # loss = - corr + args.lambd * torch.trace(cov_f @ cov_g)
+    loss = - corr + args.lambd * torch.sum(cov_f * cov_g, dim=(-2, -1))
+    return loss
 
-parser.add_argument('--der', type=float, default=0.2, help='Drop edge ratio.')
-parser.add_argument('--dfr', type=float, default=0.2, help='Drop feature ratio.')
 
-parser.add_argument("--hid_dim", type=int, default=512, help='Hidden layer dim.')
-parser.add_argument("--out_dim", type=int, default=512, help='Output layer dim.')
+def cca_loss(h1, h2, args):
+    z1 = (h1 - h1.mean(0)) / h1.std(0)
+    z2 = (h2 - h2.mean(0)) / h2.std(0)
+    c = th.mm(z1.T, z2)
+    c1 = th.mm(z1.T, z1)
+    c2 = th.mm(z2.T, z2)
+    N = h1.shape[0]
+    c = c / N
+    c1 = c1 / N
+    c2 = c2 / N
 
-args = parser.parse_args()
+    loss_inv = -th.diagonal(c).sum()
+    iden = th.tensor(np.eye(c.shape[0])).to(args.device)
+    loss_dec1 = (iden - c1).pow(2).sum()
+    loss_dec2 = (iden - c2).pow(2).sum()
+    loss = loss_inv + args.lambd * (loss_dec1 + loss_dec2)
+    return loss
 
-# check cuda
-if args.gpu != -1 and th.cuda.is_available():
-    args.device = 'cuda:{}'.format(args.gpu)
-else:
-    args.device = 'cpu'
 
-if __name__ == '__main__':
-
-    print(args)
+def _main():
+    # print(args)
     graph, feat, labels, num_class, train_idx, val_idx, test_idx = load(args.dataname)
     in_dim = feat.shape[1]
 
@@ -54,6 +70,7 @@ if __name__ == '__main__':
 
     N = graph.number_of_nodes()
 
+    print('self_sup_type:', args.self_sup_type)
     for epoch in range(args.epochs):
         model.train()
         optimizer.zero_grad()
@@ -70,22 +87,28 @@ if __name__ == '__main__':
         feat1 = feat1.to(args.device)
         feat2 = feat2.to(args.device)
 
-        z1, z2 = model(graph1, feat1, graph2, feat2)
+        h1, h2 = model(graph1, feat1, graph2, feat2)
 
-        c = th.mm(z1.T, z2)
-        c1 = th.mm(z1.T, z1)
-        c2 = th.mm(z2.T, z2)
+        if args.self_sup_type == 'cca':
 
-        c = c / N
-        c1 = c1 / N
-        c2 = c2 / N
+            loss = cca_loss(h1, h2, args)
+        else:
+            loss = neg_hscore(h1, h2, args)
 
-        loss_inv = -th.diagonal(c).sum()
-        iden = th.tensor(np.eye(c.shape[0])).to(args.device)
-        loss_dec1 = (iden - c1).pow(2).sum()
-        loss_dec2 = (iden - c2).pow(2).sum()
-
-        loss = loss_inv + args.lambd * (loss_dec1 + loss_dec2)
+        # c = th.mm(z1.T, z2)
+        # c1 = th.mm(z1.T, z1)
+        # c2 = th.mm(z2.T, z2)
+        #
+        # c = c / N
+        # c1 = c1 / N
+        # c2 = c2 / N
+        #
+        # loss_inv = -th.diagonal(c).sum()
+        # iden = th.tensor(np.eye(c.shape[0])).to(args.device)
+        # loss_dec1 = (iden - c1).pow(2).sum()
+        # loss_dec2 = (iden - c2).pow(2).sum()
+        #
+        # loss = loss_inv + args.lambd * (loss_dec1 + loss_dec2)
 
         loss.backward()
         optimizer.step()
@@ -149,6 +172,33 @@ if __name__ == '__main__':
                 if test_acc > eval_acc:
                     eval_acc = test_acc
 
-            print('Epoch:{}, train_acc:{:.4f}, val_acc:{:4f}, test_acc:{:4f}'.format(epoch, train_acc, val_acc, test_acc))
+            print(
+                'Epoch:{}, train_acc:{:.4f}, val_acc:{:4f}, test_acc:{:4f}'.format(epoch, train_acc, val_acc, test_acc))
 
     print('Linear evaluation accuracy:{:.4f}'.format(eval_acc))
+    return float(test_acc)
+
+
+if __name__ == '__main__':
+    from parser import get_parser
+
+    args = get_parser()
+    print(args)
+    # args.debug = False
+    # args.debug = False
+    results, elapsed_times = [], []
+    if args.debug:
+        seed_num = [args.seed]
+
+    seed_nums = [i for i in range(10)]
+    for seed_num in seed_nums:
+        print(f'Seed {seed_num}/{max(seed_nums)}')
+        setup_seed(seed_num)
+        test_acc = _main()
+        results.append(test_acc)
+        print(f'Seed {seed_num}/{max(seed_nums)} Acc array: ', results)
+    print(args)
+    results = np.array(results)
+    elapsed_times = np.array(elapsed_times)
+    print(f'avg_test_acc={results.mean()*100:.5f}')
+    print(f"avg_test_acc={results.mean() * 100:.3f}$\pm${results.std() * 100:.3f}")
